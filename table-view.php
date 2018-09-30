@@ -1,11 +1,11 @@
 <?php
 /*
-* Plugin Name: Recipe
-* Description: some description
+* Plugin Name: Table-View
+* Description: Wordpress plugin to create a custom table with form to seed table data and give a tabular representation of the data. Also has shortcodes, Shortcode for form: [display], Shortcode for table: [custom-table]
 * Version: 1.0
 * Author: Biraj
 * Author URI: birajgtm.com.np
-* Text Domain: recipe
+* Text Domain: table-view
 */
 
 if( !function_exists('add_action') ) {
