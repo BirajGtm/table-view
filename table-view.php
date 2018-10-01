@@ -19,6 +19,7 @@ add_shortcode('display', 'custom_form');
 add_shortcode('custom-table', 'fetch_table_data');
 //functions
 function custom_form() {
+ob_start();
  ?>
  <form action ="#" method ="post">
  <label for name=""> Insert Entries to Table:</label><br>
@@ -39,8 +40,10 @@ $charset_collate_is = $wpdb->get_charset_collate();
  echo ' Inserted Successfully';
       } else {
    echo 'Not Inserted';}
+   return ob_get_clean();
  }
 function fetch_table_data(){
+ob_start();
 global $wpdb;
 $table_name = $wpdb->prefix . "techstack_list";
 $retrieve_data = $wpdb->get_results( "SELECT * FROM $table_name" );
@@ -56,5 +59,6 @@ foreach ( $retrieve_data as $print )   {
       echo '</tr>';
   }
     echo'</table>'; 
+    return ob_get_clean();
     }
 ?>
