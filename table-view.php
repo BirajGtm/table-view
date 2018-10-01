@@ -14,10 +14,28 @@ if( !function_exists('add_action') ) {
 include('includes/activate.php');
 //hooks
 register_activation_hook(__FILE__, 'r_activate_plugin');
+register_activation_hook( __FILE__, 'seed_data' );
 //shortcodes
 add_shortcode('display', 'custom_form');
 add_shortcode('custom-table', 'fetch_table_data');
 //functions
+
+function seed_data(){
+global $wpdb;
+$table_name = $wpdb->prefix . "techstack_list";
+$name = array( 'techstack_name_1', 'techstack_name_2', 'techstack_name_3', 'techstack_name_4', 'techstack_name_5');
+
+foreach( $name as $all_name)
+{
+    $insert = $wpdb->insert(
+        $table_name,
+         array(
+            'name'   => $all_name,
+        ),
+        array( '%s' )
+    );
+}
+}
 function custom_form() {
 ob_start();
  ?>
